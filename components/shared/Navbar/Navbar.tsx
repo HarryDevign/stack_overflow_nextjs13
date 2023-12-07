@@ -1,3 +1,5 @@
+"use client"
+
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +20,7 @@ const Navbar = () => {
         />
 
         <p className="h2-bold font-spaceGrotesk text-dark-100 dark:text-light-900 max-sm:hidden">
-          Dev <span className="text-primary-500">Overflow</span>
+          Knowledge <span className="text-primary-500">Base</span>
         </p>
       </Link>
       <GlobalSearch />
