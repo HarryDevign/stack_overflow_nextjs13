@@ -5,50 +5,50 @@ import RenderTag from "../search/RenderTag";
 
 const hotQuestions = [
   {
-    _id: 1,
+    _id: '1',
     title: "This is the top questions number 1?",
   },
   {
-    _id: 2,
+    _id: '2',
     title: "This is the top questions number 2?",
   },
   {
-    _id: 3,
+    _id: '3',
     title: "This is the top questions number 3?",
   },
   {
-    _id: 4,
+    _id: '4',
     title: "This is the top questions number 4?",
   },
   {
-    _id: 5,
+    _id: '5',
     title: "This is the top questions number 5?",
   },
 ];
 
 const popularTags = [
   {
-    _id: 1,
+    _id: '1',
     name: "javascript",
     totalQuestions: 5,
   },
   {
-    _id: 2,
+    _id: '2',
     name: "react",
     totalQuestions: 2,
   },
   {
-    _id: 3,
+    _id: '3',
     name: "next",
     totalQuestions: 7,
   },
   {
-    _id: 4,
+    _id: '4',
     name: "vue",
     totalQuestions: 5,
   },
   {
-    _id: 5,
+    _id: '5',
     name: "tailwindcss",
     totalQuestions: 4,
   },
