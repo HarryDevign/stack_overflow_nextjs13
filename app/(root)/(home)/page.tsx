@@ -169,7 +169,7 @@ export default function Home() {
               title={question.title}
               tags={question.tags}
               author={question.author}
-              votes={question.votes}
+              upVotes={question.votes}
               views={question.views}
               answer={question.answer}
               createdAt={question.createdAt}

@@ -21,12 +21,15 @@ import { Input } from "@/components/ui/input";
 import { QuestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
+import { useTheme } from "@/context/ThemeProvider";
 
-const type:any = "create";
+const type: any = "create";
 
 const Question = () => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { mode } = useTheme();
 
   const log = () => {
     if (editorRef.current) {
@@ -44,17 +47,15 @@ const Question = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
 
     try {
-      
+      await createQuestion({});
     } catch (error) {
-      
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-
   }
 
   const handleInputKeyDown = (
@@ -103,7 +104,7 @@ const Question = () => {
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
               <FormLabel className="paragraph-semibold text-dark400_light900">
-                Question Title <span className="text-primary-500">*</span>
+                Question Title <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Input
@@ -127,7 +128,7 @@ const Question = () => {
             <FormItem className="flex w-full flex-col gap-3">
               <FormLabel className="paragraph-semibold text-dark400_light900">
                 Detailed explanation of your problem?{" "}
-                <span className="text-primary-500">*</span>
+                <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
@@ -136,6 +137,8 @@ const Question = () => {
                     // @ts-ignore
                     editorRef.current = editor;
                   }}
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   initialValue=""
                   init={{
                     height: 350,
@@ -163,6 +166,8 @@ const Question = () => {
                       "codesample | bold italic forecolor | alignleft aligncenter |" +
                       "alignright alignjustify | bullist numlist ",
                     content_style: "body { font-family:Inter; font-size:16px }",
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
                 />
               </FormControl>
@@ -180,7 +185,7 @@ const Question = () => {
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
               <FormLabel className="paragraph-semibold text-dark400_light900">
-                Tags <span className="text-primary-500">*</span>
+                Tags <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
                 <>
