@@ -1,12 +1,16 @@
-import React from "react";
+"use client";
 
-const AskQuestion = () => {
-  const isUserLoggedIn = false;
+import Question from "@/components/forms/Question";
 
-  if(!isUserLoggedIn) {
-    return <div>You logged in</div>
-  }
-  return <div>AskQuestion</div>;
+const Page = () => {
+  return (
+    <div className="">
+      <h1 className="h1-bold text-dark100_light900">Ask a Question</h1>
+      <div className="mt-9">
+        <Question />
+      </div>
+    </div>
+  );
 };
 
-export default AskQuestion;
+export default Page;
